@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/control_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#808080" >
+
+    <VideoView
+        android:id="@+id/video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ToggleButton
+        android:id="@+id/enable_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#00000000"
+        android:textColor="#FFFF0000"
+        android:textOff="Disabled"
+        android:textOn="Enabled"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/control_log"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFFFF"
+        android:lines="100"
+        android:text="" />
+
+    <com.example.driverstation.Joystick
+        android:id="@+id/joystick1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/joystick2"
+        android:clickable="true" />
+    <com.example.driverstation.Joystick
+        android:id="@+id/joystick2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/enable_button"
+        android:layout_marginTop="30dp"
+        android:clickable="true" />
+
+    <RadioGroup
+        android:id="@+id/run_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/run_teleop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="TeleOperated"
+            android:textColor="#F0F0F0"
+            android:textSize="25dp" />
+
+        <RadioButton
+            android:id="@+id/run_autonomous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Autonomous"
+            android:textColor="#F0F0F0"
+            android:textSize="25dp" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:id="@+id/buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" >
+
+        <Button
+            android:id="@+id/Button1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="23dp"
+            android:background="#50606060"
+            android:text="1"
+            android:textColor="#E6E6E6" />
+
+        <Button
+            android:id="@+id/Button2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignBaseline="@+id/Button1"
+            android:layout_toRightOf="@+id/Button1"
+            android:background="#50606060"
+            android:text="2"
+            android:textColor="#E6E6E6" />
+
+        <Button
+            android:id="@+id/Button3"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignLeft="@+id/Button1"
+            android:layout_below="@+id/Button1"
+            android:background="#50606060"
+            android:text="3"
+            android:textColor="#E6E6E6" />
+
+        <Button
+            android:id="@+id/Button4"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignBaseline="@+id/Button3"
+            android:layout_alignRight="@+id/Button2"
+            android:background="#50606060"
+            android:text="4"
+            android:textColor="#E6E6E6" />
+
+        <Button
+            android:id="@+id/Button5"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignBaseline="@+id/Button6"
+            android:layout_toLeftOf="@+id/Button6"
+            android:background="#50606060"
+            android:text="5"
+            android:textColor="#E6E6E6" />
+
+        <Button
+            android:id="@+id/Button6"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="23dp"
+            android:background="#50606060"
+            android:text="6"
+            android:textColor="#E6E6E6" />
+
+        <Button
+            android:id="@+id/Button7"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignBaseline="@+id/Button3"
+            android:layout_below="@+id/Button5"
+            android:layout_toLeftOf="@+id/Button6"
+            android:background="#50606060"
+            android:text="7"
+            android:textColor="#E6E6E6" />
+
+        <Button
+            android:id="@+id/Button8"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignBaseline="@+id/Button7"
+            android:layout_toRightOf="@+id/Button7"
+            android:background="#50606060"
+            android:text="8"
+            android:textColor="#E6E6E6" />
+    </RelativeLayout>
+
+    <Switch
+        android:id="@+id/video_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/enable_button"
+        android:layout_alignBottom="@+id/enable_button"
+        android:layout_marginRight="50dp"
+        android:layout_toLeftOf="@+id/joystick2"
+        android:textColor="#FFFFFFFF"
+        android:text="Video" />
+
+</RelativeLayout>
