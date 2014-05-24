@@ -7,9 +7,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.InputDevice;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnGenericMotionListener;
+import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -51,6 +53,8 @@ public class UIManager
 		joystick2.setOnChangeListener(joyListener2);
 		enableBttn.setOnCheckedChangeListener(enableListener);
 		enableAuto.setOnCheckedChangeListener(autoListener);
+		mainView.setOnGenericMotionListener(phyJoystickListener);
+		mainView.setOnKeyListener(phyButtonListener);
 			//Don't need tele listener because auto listener takes off auto
 				//mode and puts in tele.
 		
@@ -70,11 +74,11 @@ public class UIManager
 					{
 					case MotionEvent.ACTION_DOWN:
 						buttons[x] = true;
-						bttn.setBackgroundColor(Color.argb(0x88, 0xe6, 0xe6, 0xe6));
+						bttn.setBackgroundColor(Color.argb(0x50, 0xe6, 0xe6, 0xe6));
 						break;
 					case MotionEvent.ACTION_UP:
 						buttons[x] = false;
-						bttn.setBackgroundColor(Color.argb(0x88, 0x60, 0x60, 0x60));
+						bttn.setBackgroundColor(Color.argb(0x50, 0x60, 0x60, 0x60));
 						break;
 					}
 					return false;
@@ -141,7 +145,7 @@ public class UIManager
 	};
 	
 	//Listener for physical gamepad or controller without buttons.
-	OnGenericMotionListener phyControllerListener = 
+	OnGenericMotionListener phyJoystickListener = 
 			new OnGenericMotionListener(){
 
 				@Override
@@ -160,6 +164,73 @@ public class UIManager
 					return true;
 				}
 		
+	};
+	
+	//Physical button listener.
+	OnKeyListener phyButtonListener = new OnKeyListener(){
+
+		@Override
+		public boolean onKey(View view, int keyCode, KeyEvent event) {
+			if(event.getAction() == MotionEvent.ACTION_DOWN)
+			{
+				switch(keyCode)
+				{
+				case KeyEvent.KEYCODE_BUTTON_1:
+					buttons[0] = true;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_2:
+					buttons[1] = true;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_3:
+					buttons[2] = true;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_4:
+					buttons[3] = true;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_5:
+					buttons[4] = true;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_6:
+					buttons[5] = true;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_7:
+					buttons[6] = true;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_8:
+					buttons[7] = true;
+				}
+			}
+			else if(event.getAction() == MotionEvent.ACTION_UP)
+			{
+				switch(keyCode)
+				{
+				case KeyEvent.KEYCODE_BUTTON_1:
+					buttons[0] = false;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_2:
+					buttons[1] = false;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_3:
+					buttons[2] = false;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_4:
+					buttons[3] = false;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_5:
+					buttons[4] = false;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_6:
+					buttons[5] = false;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_7:
+					buttons[6] = false;
+					break;
+				case KeyEvent.KEYCODE_BUTTON_8:
+					buttons[7] = false;
+				}
+			}
+			return true;
+		}
 	};
 }
 
