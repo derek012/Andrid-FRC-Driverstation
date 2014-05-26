@@ -1,11 +1,17 @@
 package com.example.driverstation;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import com.example.driverstation.Joystick.OnChangeListener;
 
 import android.R.color;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -37,6 +43,23 @@ public class UIManager
 	private RadioButton enableAuto;
 	private ViewGroup buttonsGroup;
 	private View mainView;
+	private Thread test = new Thread(){
+		public void run(){
+			URL url;
+			try {
+				 url = new URL("http://10.26.57.11/jpg/image.jpg");
+				 InputStream in = url.openStream();
+				 Drawable drw = Drawable.createFromStream(in, "image.jpg");
+				 mainView.setBackgroundDrawable(drw);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	};
 	
 	
 	public UIManager(Activity activity){
@@ -47,6 +70,7 @@ public class UIManager
 		enableBttn = (ToggleButton)activity.findViewById(R.id.enable_button);
 		enableAuto = (RadioButton)activity.findViewById(R.id.run_autonomous);
 		mainView = (View)activity.findViewById(R.id.control_layout);
+		
 		
 		//Set event listeners
 		joystick1.setOnChangeListener(joyListener1);

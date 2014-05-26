@@ -3,23 +3,14 @@
     android:id="@+id/control_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#808080" >
+    android:background="#FF000000" >
 
     <VideoView
         android:id="@+id/video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     
-          <Switch
-        android:id="@+id/video_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/enable_button"
-        android:layout_alignBottom="@+id/enable_button"
-        android:layout_marginRight="50dp"
-        android:layout_toLeftOf="@+id/joystick2"
-        android:textColor="#FFFFFFFF"
-        android:text="Video" />
+        
     
     <ToggleButton
         android:id="@+id/enable_button"
