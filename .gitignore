@@ -1,0 +1,5 @@
+# ignore file backups
+*~
+
+/Source/Driverstation/bin/
+/Source/Driverstation/gen/
